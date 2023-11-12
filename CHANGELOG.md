@@ -1,4 +1,4 @@
-# Revision history for fyp
+# Revision history for gigaparsley-pg
 
 ## 0.1.0.0 -- YYYY-mm-dd
 

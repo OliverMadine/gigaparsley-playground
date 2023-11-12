@@ -4,7 +4,7 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE FlexibleInstances #-}
 
-module Main where
+module Parser where
 
 import Text.Gigaparsec ( Parsec, parse, Result (Success, Failure), (<|>), void, many, eof, atomic, notFollowedBy, liftA2 )
 import Text.Gigaparsec.Combinator ( sepBy, sepBy1 )
@@ -88,13 +88,3 @@ parseStat = parseDecl <|> parsePrint
 
 parseProgram :: Parsec [Stat]
 parseProgram = sepBy1 parseStat (char ';')
-
-main :: IO ()
-main = do
-    case parse (fully parseProgram) program of
-        Success success -> mapM_ print success
-        Failure fail -> putStrLn fail
-    where
-        program = programB
-
-
